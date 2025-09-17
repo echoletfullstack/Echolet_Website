@@ -137,7 +137,7 @@ const Home: React.FC = () => {
     <>
       <section
         ref={heroRef}
-        className="h-[100vh] w-full relative flex flex-col items-center text-center overflow-hidden"
+        className="min-h-[100vh] w-full relative flex flex-col items-center text-center overflow-hidden"
       >
         <div
           data-speed="0.85"
@@ -153,19 +153,19 @@ const Home: React.FC = () => {
 
           <div
             data-speed="0.35"
-            className={`${newsCycle.className} font-bold text-white flex flex-col w-[55vw]`}
+            className={`${newsCycle.className} font-bold text-white flex flex-col w-[90vw] sm:w-[80vw] md:w-[65vw] lg:w-[55vw]`}
           >
-            <h1 className="text-center m-0 text-[64px]">WE&apos;RE SHAPING A NEW ERA</h1>
+            <h1 className="text-center m-0 text-3xl sm:text-4xl md:text-[56px] lg:text-[64px] leading-tight">WE&apos;RE SHAPING A NEW ERA</h1>
 
             <div className="flex justify-between w-full items-start">
-              <h1 className="text-left m-0 text-[64px]">FOR HOW</h1>
-              <h1 className="text-right m-0 text-[64px]">WEBSITES ARE</h1>
+              <h1 className="text-left m-0 text-3xl sm:text-4xl md:text-[56px] lg:text-[64px] leading-tight">FOR HOW</h1>
+              <h1 className="text-right m-0 text-3xl sm:text-4xl md:text-[56px] lg:text-[64px] leading-tight">WEBSITES ARE</h1>
             </div>
 
-            <h1 className="self-end m-0 pr-[5vw] text-[80px]">MADE.</h1>
+            <h1 className="self-end m-0 pr-[5vw] text-4xl sm:text-5xl md:text-[72px] lg:text-[80px] leading-tight">MADE.</h1>
           </div>
 
-          <div className="flex flex-row gap-16 mt-24 items-center">
+          <div className="flex flex-row gap-6 sm:gap-10 md:gap-16 mt-10 sm:mt-16 md:mt-24 items-center">
             <Link href="/docs" className="flex items-center gap-2 text-white font-bold">
               <span>Know More</span>
               <IoArrowForwardOutline size={24} className="transform rotate-[315deg]" />
@@ -174,7 +174,7 @@ const Home: React.FC = () => {
             <div>
               <Link
                 href="/explore"
-                className="h-[48px] w-[140px] bg-white text-black flex justify-center items-center rounded-md"
+                className="h-[44px] w-[120px] sm:h-[48px] sm:w-[140px] bg-white text-black flex justify-center items-center rounded-md text-sm sm:text-base"
               >
                 Explore
               </Link>
@@ -182,10 +182,11 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 px-8 text-white z-20 pointer-events-none">
+        <div className="absolute inset-x-0 bottom-0 px-4 sm:px-8 text-white z-20 pointer-events-none">
+          {/* Subtext visible on md and larger */}
           <div
             data-speed="0.18"
-            className="absolute left-8 bottom-8 font-bold text-[40px] flex flex-col gap-2"
+            className="hidden md:flex absolute left-4 sm:left-8 bottom-6 sm:bottom-8 font-bold text-[28px] lg:text-[40px] flex-col gap-2"
           >
             <div className="flex flex-wrap gap-2">
               <span className={`${newsCycle.className} text-white`}>World&apos;s</span>
@@ -200,8 +201,9 @@ const Home: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex justify-center items-center mb-8">
-            <MdMouse size={32} className="text-white/80" />
+          {/* Mouse icon visible only on mobile */}
+          <div className="md:hidden flex justify-center items-center mb-6 sm:mb-8">
+            <MdMouse size={28} className="text-white/80" />
           </div>
         </div>
       </section>

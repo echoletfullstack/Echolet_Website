@@ -157,7 +157,7 @@ const SectionSlider: React.FC<SectionSliderProps> = ({
           <button
             aria-label="Previous slide"
             onClick={prev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-30 rounded-full bg-black/40 p-2 text-white hover:bg-black/60"
+            className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 rounded-full bg-black/40 p-2 text-white hover:bg-black/60"
             style={{ backdropFilter: "blur(4px)" }}
           >
             <IoChevronBackOutline size={22} />
@@ -166,7 +166,7 @@ const SectionSlider: React.FC<SectionSliderProps> = ({
           <button
             aria-label="Next slide"
             onClick={next}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-30 rounded-full bg-black/40 p-2 text-white hover:bg-black/60"
+            className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-30 rounded-full bg-black/40 p-2 text-white hover:bg-black/60"
             style={{ backdropFilter: "blur(4px)" }}
           >
             <IoChevronForwardOutline size={22} />
@@ -175,17 +175,18 @@ const SectionSlider: React.FC<SectionSliderProps> = ({
       )}
 
       {showDots && (
-  <div className="absolute left-1/2 -translate-x-1/2 bottom-4 z-30 flex gap-2">
-    {items.map((_, i) => (
-      <button
-        key={i}
-        aria-label={`Go to slide ${i + 1}`}
-        onClick={() => setIndex(i)}
-        className={`h-2 rounded-full transition-all ${i === index ? "bg-white w-8" : "bg-white/40 w-6"}`}
-      />
-    ))}
-  </div>
-)}
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-3 sm:bottom-4 z-30 flex gap-2">
+          {items.map((_, i) => (
+            <button
+              key={i}
+              aria-label={`Go to slide ${i + 1}`}
+              onClick={() => setIndex(i)}
+              className={`transition-all rounded-full ${i === index ? "bg-white" : "bg-white/40"}`}
+              style={{ height: 10, width: i === index ? 22 : 16 }}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

@@ -72,36 +72,39 @@ export default function Section4(): JSX.Element {
   }, [removedMap]);
 
   return (
-    <section className={`${newsCycle.className} w-full min-h-screen overflow-x-hidden flex items-center justify-center box-border`}>
-      <div className="max-w-7xl w-full h-[90vh] flex items-center gap-8 mx-auto box-border px-4">
-        <div className="w-[40%] flex flex-col gap-6">
-          <div className="flex flex-col items-baseline gap-4">
+    <section className={`${newsCycle.className} w-full min-h-screen overflow-x-hidden box-border flex items-center`}>
+      <div className="max-w-7xl w-full min-h-[80vh] flex flex-col md:flex-row items-center md:items-stretch justify-center gap-8 mx-auto box-border px-4 py-12 md:py-16">
+        {/* Heading and descriptive text */}
+        <div className="w-full md:w-[45%] flex flex-col gap-4 text-[#474747]">
+          <div className="flex flex-col items-baseline gap-3">
             <div className="flex items-baseline gap-4">
-              <h2 className="text-[56px] font-extrabold" style={{ color: "#D26969", lineHeight: 1 }}>4</h2>
-              <div className="text-[56px] font-extrabold" style={{ color: "#474747", lineHeight: 1 }}>PILLARS OF</div>
+              <h2 className="text-[36px] sm:text-[44px] lg:text-[56px] font-extrabold" style={{ color: '#D26969', lineHeight: 1 }}>4</h2>
+              <div className="text-[36px] sm:text-[44px] lg:text-[56px] font-extrabold" style={{ color: '#474747', lineHeight: 1 }}>PILLARS OF</div>
             </div>
-            <div className="text-[56px] font-extrabold" style={{ color: "#474747", lineHeight: 1 }}>ECHOLET</div>
+            <div className="text-[36px] sm:text-[44px] lg:text-[56px] font-extrabold" style={{ color: '#474747', lineHeight: 1 }}>ECHOLET</div>
           </div>
-          <p className="text-[20px] text-[#474747] leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-[20px] leading-relaxed">
             Echolet is not unique because we say-so; it’s different in its core understanding of how things should work and must work.
           </p>
-          <div className="mt-4 text-[#474747]">
+          <div className="mt-2 text-[#474747]">
             {selected ? (
               <>
-                <h3 className="text-[28px] font-bold mb-3">{selected.title}</h3>
-                <p className={`text-[20px] leading-relaxed ${newsCycle.className}`}>{selected.description}</p>
+                <h3 className="text-xl sm:text-2xl lg:text-[28px] font-bold mb-3">{selected.title}</h3>
+                <p className={`text-base sm:text-lg lg:text-[20px] leading-relaxed ${newsCycle.className}`}>{selected.description}</p>
               </>
             ) : (
               <>
-                <h3 className="text-[28px] font-semibold mb-3">Click a pillar to know more</h3>
-                <p className={`text-[20px] leading-relaxed text-[#6b6b6b] ${newsCycle.className}`}>
+                <h3 className="text-xl sm:text-2xl lg:text-[28px] font-semibold mb-3">Click a pillar to know more</h3>
+                <p className={`text-base sm:text-lg lg:text-[20px] leading-relaxed text-[#6b6b6b] ${newsCycle.className}`}>
                   Click the top card to slide it away and reveal the one beneath. Press the ← key to undo.
                 </p>
               </>
             )}
           </div>
         </div>
-        <div className="flex-1 flex items-center justify-center">
+
+        {/* Stacked cards: same interaction on all breakpoints; placed below text on mobile */}
+        <div className="w-full md:flex-1 flex items-center justify-center">
           <div
             className="relative"
             style={{
@@ -117,8 +120,8 @@ export default function Section4(): JSX.Element {
               const offsetX = i * 6;
               const zIndex = 2000 - i;
 
-              const exitTranslate = isRemoved ? "140%" : "0%";
-              const exitRotate = isRemoved ? "6deg" : "0deg";
+              const exitTranslate = isRemoved ? '140%' : '0%';
+              const exitRotate = isRemoved ? '6deg' : '0deg';
               const baseTransform = `translate3d(${offsetX}px, ${offsetY}px, 0)`;
               const transform = `${baseTransform} translateX(${exitTranslate}) rotate(${exitRotate})`;
 
@@ -129,17 +132,17 @@ export default function Section4(): JSX.Element {
                   aria-label={`Card for ${card.title}`}
                   className="absolute left-0 top-0 p-0 border-0 bg-transparent rounded-xl"
                   style={{
-                    width: "100%",
-                    height: "100%",
+                    width: '100%',
+                    height: '100%',
                     zIndex,
                     transform,
-                    transition: "transform 1000ms cubic-bezier(.2,.9,.25,1), opacity 800ms ease, box-shadow 400ms ease",
-                    willChange: "transform, opacity, box-shadow",
-                    boxShadow: isTop ? "0 18px 36px rgba(0,0,0,0.3)" : "0 8px 18px rgba(0,0,0,0.15)",
-                    cursor: isTop ? "pointer" : "default",
+                    transition: 'transform 1000ms cubic-bezier(.2,.9,.25,1), opacity 800ms ease, box-shadow 400ms ease',
+                    willChange: 'transform, opacity, box-shadow',
+                    boxShadow: isTop ? '0 18px 36px rgba(0,0,0,0.3)' : '0 8px 18px rgba(0,0,0,0.15)',
+                    cursor: isTop ? 'pointer' : 'default',
                     opacity: isRemoved ? 0 : 1,
-                    pointerEvents: isRemoved ? "none" : "auto",
-                    backgroundColor: card.accent ?? "#f0f0f0",
+                    pointerEvents: isRemoved ? 'none' : 'auto',
+                    backgroundColor: card.accent ?? '#f0f0f0',
                   }}
                 >
                   <div style={{ position: 'relative', width: '100%', height: '100%' }}>
@@ -149,9 +152,9 @@ export default function Section4(): JSX.Element {
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
                       style={{
-                        objectFit: "cover",
-                        objectPosition: "center",
-                        pointerEvents: "none",
+                        objectFit: 'cover',
+                        objectPosition: 'center',
+                        pointerEvents: 'none',
                         borderRadius: 'inherit',
                       }}
                       priority={card.id === 0}
@@ -162,8 +165,7 @@ export default function Section4(): JSX.Element {
                       className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full px-16 text-left select-none pointer-events-none"
                     >
                       <div
-                        className={`${newRocker.className} text-[56px] leading-tight text-[#BD984A]`}
-                        
+                        className={`${newRocker.className} text-[40px] sm:text-[48px] md:text-[56px] leading-tight text-[#BD984A]`}
                       >
                         Click here to know more
                       </div>

@@ -21,7 +21,7 @@ export default function Section5(): JSX.Element {
           We are constantly in need for help and we’d love for you to join us !
         </p>
 
-        <div className="mt-8 flex items-center gap-6">
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
           <Link href="/learn" className="inline-flex items-center gap-2 text-white text-[18px] no-underline" aria-label="Learn more">
             <span>Learn More</span>
 
